@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Zaokrąglanie</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+        #wyniki {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="number" step="any" id="liczba" required>
+    <button onclick="zaokraglij()">Zaokrągl</button>
+
+    <div id="wyniki" style="display: none;">
+        <div>round: <span id="r"></span></div>
+        <div>floor: <span id="f"></span></div>
+        <div>ceil: <span id="c"></span></div>
+        <div>trunc: <span id="t"></span></div>
+    </div>
+
+    <script>
+        function zaokraglij() {
+            const val = parseFloat(document.getElementById("liczba").value);
+            if (isNaN(val)) {
+                alert("Ej, po co to? Wpisz liczbę.");
+                document.getElementById("wyniki").style.display = "none";
+                return;
+            }
+            document.getElementById("wyniki").style.display = "flex";
+            document.getElementById("r").textContent = Math.round(val);
+            document.getElementById("f").textContent = Math.floor(val);
+            document.getElementById("c").textContent = Math.ceil(val);
+            document.getElementById("t").textContent = Math.trunc(val);
+        }
+    </script>
+
+</body>
+</html>
